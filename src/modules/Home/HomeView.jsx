@@ -51,7 +51,6 @@ const HomeView = () => {
   );
 
   const { cart, addProductToCart } = useCartStore();
-  console.log(cart, addProductToCart)
 
   const totalPages = data?.meta?.totalPages;
 
