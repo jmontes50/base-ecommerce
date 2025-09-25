@@ -1,4 +1,4 @@
-import React from 'react'
+import { toast } from "react-toastify"
 
 // Producto model reference:
 // {
@@ -14,7 +14,15 @@ import React from 'react'
 // }
 
 const ProductCard = ({ producto, addToCart }) => {
-  const { nombre, descripcion, precio, imagen, stock } = producto
+  const { nombre, descripcion, precio, imagen, stock } = producto;
+
+  const handleAddToCart = () => {
+    addToCart(producto);
+    toast("Producto agregado!", {
+      theme:"dark",
+      type:"success"
+    })
+  }
 
   return (
     <div className="card bg-base-100 shadow-sm hover:shadow-md transition-shadow">
@@ -42,7 +50,7 @@ const ProductCard = ({ producto, addToCart }) => {
         </div>
         <div className="card-actions pt-2">
           {/* Botón deshabilitado si no hay stock (condicional booleana simple) */}
-          <button className="btn btn-primary btn-block" disabled={stock <= 0} onClick={() => { addToCart(producto) }}>
+          <button className="btn btn-primary btn-block" disabled={stock <= 0} onClick={handleAddToCart}>
             Agregar
           </button>
         </div>
