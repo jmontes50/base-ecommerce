@@ -42,8 +42,8 @@ const MOCK_PRODUCTS = [
 
 const HomeView = () => {
   //Los customhook tienen que usarse dentro de los componentes
-  const { data } = useGetAxios(
-    "https://68afa145b91dfcdd62bcb6b1.mockapi.io/productos"
+  const { data, loading, error } = useGetAxios(
+    "https://simple-api-2ivd.onrender.com/productos"
   );
 
   console.log(data);
@@ -74,9 +74,11 @@ const HomeView = () => {
 
       <h2 className="mt-8 mb-4 text-xl font-semibold">Destacados</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        {/* renderizado de listas */}
-        {MOCK_PRODUCTS.map((p) => (
-          <ProductCard key={p.id} producto={p} />
+        {/* operador de encadenamiento opcional */}
+        {/* validamos que la propiedad productos exista, recodermos que data originalmente es null */}
+        {/* aplicamos un renderizado de listas para mostrar los productos de la API */}
+        {data?.productos && data.productos.map((item) => (
+          <ProductCard key={item.id} producto={item} />
         ))}
       </div>
     </div>
