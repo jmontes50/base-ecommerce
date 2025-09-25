@@ -9,7 +9,7 @@ const Navbar = () => {
   const { cart } = useCartStore();
 
   return (
-    <div className="navbar bg-base-100 border-b">
+    <div className="navbar bg-base-100 border-b sticky top-0 z-50">
       {/* Sección izquierda: logo + menú móvil */}
       <div className="navbar-start">
         {/* Menú hamburguesa (solo visible en mobile, se oculta en lg+) */}
