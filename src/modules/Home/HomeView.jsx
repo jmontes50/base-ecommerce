@@ -48,6 +48,22 @@ const HomeView = () => {
   const { data, loading, error } = useGetAxios(
     `https://simple-api-2ivd.onrender.com/productos?page=${page}&limit=6`
   );
+
+  const totalPages = data?.meta?.totalPages;
+
+  const previousPage = () => {
+    if(page > 1) { //si puede reducirse a 1
+      setPage(page - 1)
+    }
+  }
+
+  const nextPage = () => {
+    if(page < totalPages) { //si todavia no llego al máximo de páginas
+      setPage(page + 1)
+    }
+  }
+
+
   // console.log(data);
   if(loading){
     return <Loading />
