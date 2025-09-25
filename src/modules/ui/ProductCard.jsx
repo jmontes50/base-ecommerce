@@ -13,7 +13,7 @@ import React from 'react'
 //   categoriaId: number
 // }
 
-const ProductCard = ({ producto }) => {
+const ProductCard = ({ producto, addToCart }) => {
   const { nombre, descripcion, precio, imagen, stock } = producto
 
   return (
@@ -42,7 +42,9 @@ const ProductCard = ({ producto }) => {
         </div>
         <div className="card-actions pt-2">
           {/* Botón deshabilitado si no hay stock (condicional booleana simple) */}
-          <button className="btn btn-primary btn-block" disabled={stock <= 0}>Agregar</button>
+          <button className="btn btn-primary btn-block" disabled={stock <= 0} onClick={() => { addToCart(producto) }}>
+            Agregar
+          </button>
         </div>
       </div>
     </div>
