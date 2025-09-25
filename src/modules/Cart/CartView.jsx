@@ -48,9 +48,11 @@ const CartView = () => {
                 type="text"
                 className="input w-full"
                 placeholder="Ej. Juan Perez"
-                {...register("fullname")}
+                {...register("fullname", { required: "Este campo es requerido" })}
               />
-              {/* <p className="label">Optional</p> */}
+              {/* para acceder al mensaje de error podemos usar errors.nombrederegistro.message */}
+              {errors && <p className="label text-red-600 text-xs">{errors.fullname.message}</p>}
+
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Número de celular</legend>
@@ -72,7 +74,7 @@ const CartView = () => {
               />
               {/* <p className="label">Optional</p> */}
             </fieldset>
-            <button className="btn btn-primary mt-4">
+            <button className="btn btn-primary mt-4" type="submit">
               Confirmar
             </button>
           </form>
