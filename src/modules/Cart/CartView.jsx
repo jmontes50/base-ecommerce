@@ -12,6 +12,10 @@ const CartView = () => {
     formState: { errors },
   } = useForm();
 
+  const handleConfirmCart = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-3 md:px-6 py-6">
       <h2 className="text-4xl font-semibold mb-5">Prepara tu orden</h2>
@@ -37,22 +41,40 @@ const CartView = () => {
         </div>
         {/* form */}
         <div className="col-span-1">
-          <form>
+          <form onSubmit={handleSubmit(handleConfirmCart)}>
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Nombres y apellidos:</legend>
-              <input type="text" className="input w-full" placeholder="Ej. Juan Perez" />
+              <input
+                type="text"
+                className="input w-full"
+                placeholder="Ej. Juan Perez"
+                {...register("fullname")}
+              />
               {/* <p className="label">Optional</p> */}
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Número de celular</legend>
-              <input type="text" className="input w-full" placeholder="Ej. 9999999999" />
+              <input
+                type="text"
+                className="input w-full"
+                placeholder="Ej. 9999999999"
+                {...register("phone")}
+              />
               {/* <p className="label">Optional</p> */}
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Dirección:</legend>
-              <input type="text" className="input w-full" placeholder="Ej. Av. Lima" />
+              <input
+                type="text"
+                className="input w-full"
+                placeholder="Ej. Av. Lima"
+                {...register("address")}
+              />
               {/* <p className="label">Optional</p> */}
             </fieldset>
+            <button className="btn btn-primary mt-4">
+              Confirmar
+            </button>
           </form>
         </div>
       </div>
