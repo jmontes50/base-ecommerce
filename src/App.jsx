@@ -2,6 +2,7 @@ import { ToastContainer } from 'react-toastify'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './modules/ui/Navbar'
 import HomeView from './modules/Home/HomeView'
+import CartView from './modules/Cart/CartView'
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomeView />} />
+        <Route path="/cart" element={<CartView />} />
       </Routes>
 
       <ToastContainer />
