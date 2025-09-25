@@ -2,6 +2,7 @@ import { useState } from "react";
 import useGetAxios from "../../hooks/useGetAxios";
 import ProductCard from "../ui/ProductCard";
 import Loading from "../ui/Loading";
+import useCartStore from "../../stores/useCartStore";
 
 const MOCK_PRODUCTS = [
   {
@@ -48,6 +49,9 @@ const HomeView = () => {
   const { data, loading, error } = useGetAxios(
     `https://simple-api-2ivd.onrender.com/productos?page=${page}&limit=6`
   );
+
+  const { cart, addProductToCart } = useCartStore();
+  console.log(cart, addProductToCart)
 
   const totalPages = data?.meta?.totalPages;
 
@@ -103,7 +107,7 @@ const HomeView = () => {
         {/* validamos que la propiedad productos exista, recodermos que data originalmente es null */}
         {/* aplicamos un renderizado de listas para mostrar los productos de la API */}
         {data?.productos && data.productos.map((item) => (
-          <ProductCard key={item.id} producto={item} />
+          <ProductCard key={item.id} producto={item} addToCart={addProductToCart} />
         ))}
       </div>
       {/* botones */}
