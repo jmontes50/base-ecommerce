@@ -48,11 +48,16 @@ const CartView = () => {
                 type="text"
                 className="input w-full"
                 placeholder="Ej. Juan Perez"
-                {...register("fullname", { required: "Este campo es requerido" })}
+                {...register("fullname", {
+                  required: "Este campo es requerido",
+                })}
               />
               {/* para acceder al mensaje de error podemos usar errors.nombrederegistro.message */}
-              {errors && <p className="label text-red-600 text-xs">{errors.fullname.message}</p>}
-
+              {errors && (
+                <p className="label text-red-600 text-xs">
+                  {errors?.fullname?.message}
+                </p>
+              )}
             </fieldset>
             <fieldset className="fieldset">
               <legend className="fieldset-legend">Número de celular</legend>
@@ -70,9 +75,23 @@ const CartView = () => {
                 type="text"
                 className="input w-full"
                 placeholder="Ej. Av. Lima"
-                {...register("address")}
+                {...register("address", {
+                  required: "Este campo también es obligatorio",
+                  minLength: {
+                    value: 4,
+                    message: "La dirección no puede ser muy corta",
+                  },
+                  maxLength: {
+                    value: 25,
+                    message: "La dirección no puede ser muy larga",
+                  },
+                })}
               />
-              {/* <p className="label">Optional</p> */}
+              {errors && (
+              <p className="label text-red-600 text-xs">
+                {errors?.address?.message}
+              </p>
+              )}
             </fieldset>
             <button className="btn btn-primary mt-4" type="submit">
               Confirmar
