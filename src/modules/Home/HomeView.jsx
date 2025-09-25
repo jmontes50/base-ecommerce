@@ -1,5 +1,6 @@
 import useGetAxios from "../../hooks/useGetAxios";
 import ProductCard from "../ui/ProductCard";
+import Loading from "../ui/Loading";
 
 const MOCK_PRODUCTS = [
   {
@@ -45,8 +46,11 @@ const HomeView = () => {
   const { data, loading, error } = useGetAxios(
     "https://simple-api-2ivd.onrender.com/productos"
   );
+  // console.log(data);
+  if(loading){
+    return <Loading />
+  }
 
-  console.log(data);
 
   return (
     <div className="max-w-7xl mx-auto px-3 md:px-6 py-6">
