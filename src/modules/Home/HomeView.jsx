@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useGetAxios from "../../hooks/useGetAxios";
 import ProductCard from "../ui/ProductCard";
 import Loading from "../ui/Loading";
@@ -42,9 +43,10 @@ const MOCK_PRODUCTS = [
 ];
 
 const HomeView = () => {
+  const [page, setPage] = useState(1);
   //Los customhook tienen que usarse dentro de los componentes
   const { data, loading, error } = useGetAxios(
-    "https://simple-api-2ivd.onrender.com/productos"
+    `https://simple-api-2ivd.onrender.com/productos?page=${page}&limit=6`
   );
   // console.log(data);
   if(loading){
@@ -56,7 +58,6 @@ const HomeView = () => {
       Ocurrio un error, por favor intente en otro momento
     </h2>)
   }
-
 
   return (
     <div className="max-w-7xl mx-auto px-3 md:px-6 py-6">
