@@ -51,6 +51,12 @@ const HomeView = () => {
     return <Loading />
   }
 
+  if(error){
+    return (<h2 className="text-xl p-4">
+      Ocurrio un error, por favor intente en otro momento
+    </h2>)
+  }
+
 
   return (
     <div className="max-w-7xl mx-auto px-3 md:px-6 py-6">
