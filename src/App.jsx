@@ -1,4 +1,4 @@
-import React from 'react'
+import { ToastContainer } from 'react-toastify'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './modules/ui/Navbar'
 import HomeView from './modules/Home/HomeView'
@@ -11,6 +11,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomeView />} />
       </Routes>
+
+      <ToastContainer />
     </div>
   )
 }
