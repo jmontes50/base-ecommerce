@@ -63,8 +63,6 @@ const HomeView = () => {
     }
   }
 
-
-  // console.log(data);
   if(loading){
     return <Loading />
   }
@@ -107,6 +105,15 @@ const HomeView = () => {
         {data?.productos && data.productos.map((item) => (
           <ProductCard key={item.id} producto={item} />
         ))}
+      </div>
+      {/* botones */}
+      <div className="flex justify-between">
+        <button className="btn btn-primary" onClick={previousPage}>
+          Página Previa
+        </button>
+        <button className="btn btn-primary" onClick={nextPage}>
+          Siguiente Página
+        </button>
       </div>
     </div>
   );
