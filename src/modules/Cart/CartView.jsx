@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useCartStore from "../../stores/useCartStore";
+import { toast } from "react-toastify";
 
 const CartView = () => {
   const { cart } = useCartStore();
@@ -13,7 +14,11 @@ const CartView = () => {
   } = useForm();
 
   const handleConfirmCart = (data) => {
-    console.log(data);
+    console.log(data); //podria reemplazar con un POST
+    toast("Carrito Guardado!", {
+      theme:"dark",
+      type: "success"
+    })
   };
 
   return (
