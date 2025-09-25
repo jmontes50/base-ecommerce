@@ -1,7 +1,16 @@
+import { useForm } from "react-hook-form";
 import useCartStore from "../../stores/useCartStore";
 
 const CartView = () => {
   const { cart } = useCartStore();
+  // register, es una función para indicar a hook forms que maneje un input
+  // handleSubmit, sirve para manejar el submit, nos pedirá una función
+  // errors servirá para mostrar errores al usuario, required, formato
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   return (
     <div className="max-w-7xl mx-auto px-3 md:px-6 py-6">
@@ -26,9 +35,26 @@ const CartView = () => {
             </div>
           ))}
         </div>
-
         {/* form */}
-        <div></div>
+        <div className="col-span-1">
+          <form>
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Nombres y apellidos:</legend>
+              <input type="text" className="input w-full" placeholder="Ej. Juan Perez" />
+              {/* <p className="label">Optional</p> */}
+            </fieldset>
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Número de celular</legend>
+              <input type="text" className="input w-full" placeholder="Ej. 9999999999" />
+              {/* <p className="label">Optional</p> */}
+            </fieldset>
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Dirección:</legend>
+              <input type="text" className="input w-full" placeholder="Ej. Av. Lima" />
+              {/* <p className="label">Optional</p> */}
+            </fieldset>
+          </form>
+        </div>
       </div>
     </div>
   );
