@@ -23,13 +23,15 @@ export default function RegisterView({ onSubmit }) {
   });
 
   const { registerUser } = useAuthStore();
+  const navigate = useNavigate();
 
   const onSubmitInternal = async (data) => {
     // Simula acción externa; puedes reemplazar por llamada a tu API
     try {
-      console.log(data);
-      // registerUser()
+      // console.log(data);
+      await registerUser(data);
       reset(); // limpia el formulario al terminar
+      navigate('/');
     } catch (e) {
       // Manejo básico de error (puedes mejorarlo según tu UX)
       console.error("Register error:", e);

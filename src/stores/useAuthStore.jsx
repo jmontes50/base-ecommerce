@@ -11,7 +11,13 @@ const useAuthStore = create((set) => ({
   registerUser: async (userInfo) => {
     try {
       const response = await axios.post('https://simple-api-2ivd.onrender.com/auth/register', userInfo)
-      console.log(response)
+      // console.log(response)
+      if(response.status === 201){
+        toast.success("usuario registrado!!!")
+        return true; //no estoy utilizando set, este true ira al componente
+      } else {
+        throw new Error("Error al registrarse!, intente de nuevo");
+      }
     } catch (error) {
       console.log(error)
       toast.error("Error al registrarse, verifique su información")
