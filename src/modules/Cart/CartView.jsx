@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 
 const CartView = () => {
   const { cart, resetCart } = useCartStore();
-  console.log(cart)
   // register, es una función para indicar a hook forms que maneje un input
   // handleSubmit, sirve para manejar el submit, nos pedirá una función
   // errors servirá para mostrar errores al usuario, required, formato
@@ -34,7 +33,6 @@ const CartView = () => {
           {/* resumen carrito */}
           {cart.map((producto) => (
             <div className="flex" key={producto.id}>
-              {console.log(producto)}
               <div className="aspect-square w-16 overflow-hidden">
                 <img
                   src={producto.imagen}
@@ -44,8 +42,8 @@ const CartView = () => {
               </div>
               <div className="flex flex-col gap-2 text-sm">
                 <h4 className="font-bold text-base">{producto.nombre}</h4>
-                <p className="">S/ {producto.precio.toFixed(2)}</p>
-                <p>{producto.sku}</p>
+                <p className="">S/ {(producto.precio * producto.cantidad).toFixed(2)}</p>
+                <p>Cantidad: {producto.cantidad}</p>
               </div>
             </div>
           ))}
