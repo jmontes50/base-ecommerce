@@ -3,7 +3,7 @@ import useCartStore from "../../stores/useCartStore";
 import { toast } from "react-toastify";
 
 const CartView = () => {
-  const { cart } = useCartStore();
+  const { cart, resetCart } = useCartStore();
   // register, es una función para indicar a hook forms que maneje un input
   // handleSubmit, sirve para manejar el submit, nos pedirá una función
   // errors servirá para mostrar errores al usuario, required, formato
@@ -24,8 +24,12 @@ const CartView = () => {
   return (
     <div className="max-w-7xl mx-auto px-3 md:px-6 py-6">
       <h2 className="text-4xl font-semibold mb-5">Prepara tu orden</h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="col-span-1 flex flex-col gap-4">
+          <button className="btn btn-primary btn-sm ml-auto block" onClick={resetCart}>
+            Limpiar carrito
+          </button>
           {/* resumen carrito */}
           {cart.map((producto) => (
             <div className="flex" key={producto.id}>
