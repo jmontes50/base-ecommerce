@@ -10,7 +10,8 @@ const Navbar = () => {
   const { cart } = useCartStore();
   const { theme, changeTheme } = useThemeStore();
 
-
+  const total = cart.reduce((acumulador, item) => acumulador + item.cantidad, 0);
+  console.log(total)
   return (
     <div className="navbar bg-base-100 border-b sticky top-0 z-50">
       {/* Sección izquierda: logo + menú móvil */}
@@ -49,7 +50,7 @@ const Navbar = () => {
             </li>
             <li className="indicator">
               <span className="indicator-item badge badge-primary badge-xs">
-                {cart.length}
+                {total}
               </span>
               <Link to="/cart">Carrito</Link>
             </li>
@@ -76,7 +77,7 @@ const Navbar = () => {
           </li>
           <li className="indicator">
             <span className="indicator-item badge badge-primary badge-xs">
-              {cart.length}
+              {total}
             </span>
             <Link to="/cart">Carrito</Link>
           </li>
