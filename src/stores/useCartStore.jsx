@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { saveStorage, getStorage } from "../utils/localStorageUtils";
+import { saveStorage, getStorage, removeStorage } from "../utils/localStorageUtils";
 
 const KEY_CART = "cart";
 
@@ -46,6 +46,10 @@ const useCartStore = create(
         "cart/addProductToCart"
       );
     },
+    resetCart: () => {
+      removeStorage(KEY_CART);
+      set({ cart: [] })
+    }
   }))
 );
 
