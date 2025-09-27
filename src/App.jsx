@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './modules/ui/Navbar'
 import HomeView from './modules/Home/HomeView'
 import CartView from './modules/Cart/CartView'
+import RegisterView from './modules/Auth/RegisterView'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomeView />} />
         <Route path="/cart" element={<CartView />} />
+        <Route path="/register" element={<RegisterView />} />
       </Routes>
 
       <ToastContainer />
