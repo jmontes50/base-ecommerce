@@ -34,7 +34,7 @@ const useCartStore = create(
             //Si ya existe nos dará 0,1,2,3,... , el producto existe, le incrementaremos la propiedad cantidad en +1
             const temporalCart = {...state.cart};
             temporalCart[indexIfExists].cantidad++;
-
+            saveStorage(KEY_CART, temporalCart);
             return {
               cart: temporalCart
             }

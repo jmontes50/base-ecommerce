@@ -12,8 +12,12 @@ const getStorage = (name) => {
 }
 
 //remover, con removeItem
+const removeStorage = () => {
+  localStorage.clear();
+}
 
 export {
   saveStorage,
-  getStorage
+  getStorage,
+  removeStorage
 }
