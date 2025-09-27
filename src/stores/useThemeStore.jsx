@@ -14,7 +14,7 @@ const useThemeStore = create(
         const html = document.querySelector('html');
         html.setAttribute("data-theme", newTheme);
 
-        return { theme: netheme }
+        return { theme: newTheme }
 
       }, false, "theme/changeTheme");
     }
