@@ -5,20 +5,31 @@ import { saveStorage, getStorage } from "../utils/localStorageUtils";
 const THEME_KEY = "theme";
 
 const useThemeStore = create(
-  devtools(set => ({
-    theme: "light",
-    changeTheme: () => {
-      set(state => {
-        const newTheme = state.theme === 'dark' ? 'light' : 'dark';
+  devtools((set) => {
+    const initialTheme = getStorage(THEME_KEY) || "light";
 
-        const html = document.querySelector('html');
-        html.setAttribute("data-theme", newTheme);
+    const htmlBase = document.querySelector("html");
+    htmlBase.setAttribute("data-theme", initialTheme);
 
-        return { theme: newTheme }
+    return {
+      theme: initialTheme,
+      changeTheme: () => {
+        set(
+          (state) => {
+            const newTheme = state.theme === "dark" ? "light" : "dark";
+            saveStorage(THEME_KEY, newTheme);
 
-      }, false, "theme/changeTheme");
-    }
-  }))
-)
+            const html = document.querySelector("html");
+            html.setAttribute("data-theme", newTheme);
+
+            return { theme: newTheme };
+          },
+          false,
+          "theme/changeTheme"
+        );
+      },
+    };
+  })
+);
 
 export default useThemeStore;
