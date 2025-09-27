@@ -92,7 +92,7 @@ const Navbar = () => {
           type="checkbox"
           checked={theme === 'light' ? true : false }
           className="toggle mr-4"
-          onClick={changeTheme}
+          onChange={changeTheme}
         />
         <div className="dropdown dropdown-end">
           {/* Avatar/placeholder del usuario que abre el menú */}

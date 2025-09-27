@@ -29,6 +29,7 @@ const CartView = () => {
           {/* resumen carrito */}
           {cart.map((producto) => (
             <div className="flex" key={producto.id}>
+              {console.log(producto)}
               <div className="aspect-square w-16 overflow-hidden">
                 <img
                   src={producto.imagen}
