@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useCartStore from "../../stores/useCartStore";
+import useThemeStore from "../../stores/useThemeStore";
 
 // Navbar responsivo usando DaisyUI
 // - Mobile: muestra un botón hamburguesa con menú desplegable
@@ -7,6 +8,8 @@ import useCartStore from "../../stores/useCartStore";
 // - Lado derecho: avatar de usuario con dropdown de opciones
 const Navbar = () => {
   const { cart } = useCartStore();
+  const { theme, changeTheme } = useThemeStore();
+
 
   return (
     <div className="navbar bg-base-100 border-b sticky top-0 z-50">
@@ -85,6 +88,12 @@ const Navbar = () => {
 
       {/* Sección derecha: acciones de usuario (avatar con opciones) */}
       <div className="navbar-end">
+        <input
+          type="checkbox"
+          checked={theme === 'light' ? true : false }
+          className="toggle mr-4"
+          onClick={changeTheme}
+        />
         <div className="dropdown dropdown-end">
           {/* Avatar/placeholder del usuario que abre el menú */}
           <div
