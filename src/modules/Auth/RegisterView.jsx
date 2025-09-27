@@ -1,5 +1,7 @@
 // RegisterView.jsx
 import { useForm } from "react-hook-form";
+import useAuthStore from "../../stores/useAuthStore";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Componente de registro con inputs NO controlados usando react-hook-form.
@@ -20,14 +22,13 @@ export default function RegisterView({ onSubmit }) {
     reValidateMode: "onBlur",
   });
 
+  const { registerUser } = useAuthStore();
+
   const onSubmitInternal = async (data) => {
     // Simula acción externa; puedes reemplazar por llamada a tu API
     try {
-      if (onSubmit) {
-        await onSubmit(data);
-      } else {
-        console.log("Register form data:", data);
-      }
+      console.log(data);
+      // registerUser()
       reset(); // limpia el formulario al terminar
     } catch (e) {
       // Manejo básico de error (puedes mejorarlo según tu UX)
@@ -52,16 +53,16 @@ export default function RegisterView({ onSubmit }) {
 
         {/* Nombre */}
         <div className="form-control">
-          <label className="label" htmlFor="name">
+          <label className="label" htmlFor="nombre">
             <span className="label-text">Nombre</span>
           </label>
           <input
-            id="name"
+            id="nombre"
             type="text"
             placeholder="Tu nombre"
             className="input input-bordered w-full"
             // Registro NO controlado: react-hook-form maneja el ref internamente
-            {...register("name", {
+            {...register("nombre", {
               required: "El nombre es obligatorio",
               minLength: { value: 2, message: "Mínimo 2 caracteres" },
               maxLength: { value: 80, message: "Máximo 80 caracteres" },
@@ -69,11 +70,11 @@ export default function RegisterView({ onSubmit }) {
               validate: (v) =>
                 (v?.trim?.().length ?? 0) > 0 || "No puede estar vacío",
             })}
-            autoComplete="name"
+            autoComplete="nombre"
           />
-          {errors.name && (
+          {errors.nombre && (
             <span className="mt-1 text-sm text-error">
-              {errors.name.message}
+              {errors.nombre.message}
             </span>
           )}
         </div>
@@ -120,10 +121,10 @@ export default function RegisterView({ onSubmit }) {
               required: "La contraseña es obligatoria",
               minLength: { value: 8, message: "Mínimo 8 caracteres" },
               // Reglas opcionales: al menos 1 letra y 1 número
-              validate: (v) =>
-                /[A-Za-z]/.test(v) && /\d/.test(v)
-                  ? true
-                  : "Usa letras y números",
+              // validate: (v) =>
+              //   /[A-Za-z]/.test(v) && /\d/.test(v)
+              //     ? true
+              //     : "Usa letras y números",
             })}
             autoComplete="new-password"
           />
