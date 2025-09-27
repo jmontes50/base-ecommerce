@@ -12,6 +12,7 @@ const useCartStore = create(
     addProductToCart: (product) => {
       set(
         (state) => {
+          console.log(state)
           //Vamos a preguntar si existe el producto en cart
           // nos dará -1 si no encuentra nada de 0 a + con la posición del item
           const indexIfExists = state.cart.findIndex(
@@ -32,7 +33,7 @@ const useCartStore = create(
             };
           } else {
             //Si ya existe nos dará 0,1,2,3,... , el producto existe, le incrementaremos la propiedad cantidad en +1
-            const temporalCart = {...state.cart};
+            const temporalCart = [...state.cart];
             temporalCart[indexIfExists].cantidad++;
             saveStorage(KEY_CART, temporalCart);
             return {

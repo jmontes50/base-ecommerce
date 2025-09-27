@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 const CartView = () => {
   const { cart, resetCart } = useCartStore();
+  console.log(cart)
   // register, es una función para indicar a hook forms que maneje un input
   // handleSubmit, sirve para manejar el submit, nos pedirá una función
   // errors servirá para mostrar errores al usuario, required, formato
