@@ -35,7 +35,9 @@ const useCartStore = create(
             const temporalCart = {...state.cart};
             temporalCart[indexIfExists].cantidad++;
 
-            return temporalCart,
+            return {
+              cart: temporalCart
+            }
           }
 
           //agregamos los valores para devtools
