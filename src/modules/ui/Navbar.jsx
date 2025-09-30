@@ -10,7 +10,7 @@ import useAuthStore from "../../stores/useAuthStore";
 const Navbar = () => {
   const { cart } = useCartStore();
   const { theme, changeTheme } = useThemeStore();
-  const { isLogged } = useAuthStore();
+  const { isLogged, logout } = useAuthStore();
 
   const total = cart.reduce(
     (acumulador, item) => acumulador + item.cantidad,
@@ -135,7 +135,7 @@ const Navbar = () => {
               <a>Pedidos</a>
             </li>
             <li>
-              <a>Cerrar sesión</a>
+              <button onClick={logout}>Cerrar sesión</button>
             </li>
           </ul>
         </div>
