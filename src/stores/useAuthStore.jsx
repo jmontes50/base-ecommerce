@@ -28,6 +28,9 @@ const useAuthStore = create((set) => ({
     try {
       const response = await axios.post('https://simple-api-2ivd.onrender.com/auth/login', { email, password});
       if(response.status === 200) {
+        // console.log(response)
+        const { token, usuario } = response.data;
+        set({ user: usuario, token: token, isLogged: true });
         toast.success("Bienvenido!!!");
         return true
       } else {
@@ -36,7 +39,7 @@ const useAuthStore = create((set) => ({
     } catch (error) {
       console.log(error)
       toast.error("Error al ingresar, verifique sus datos");
-      throw errorWWW
+      throw error
     }
   }
 }))
