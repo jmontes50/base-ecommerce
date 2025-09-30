@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useCartStore from "../../stores/useCartStore";
 import useThemeStore from "../../stores/useThemeStore";
+import useAuthStore from "../../stores/useAuthStore";
 
 // Navbar responsivo usando DaisyUI
 // - Mobile: muestra un botón hamburguesa con menú desplegable
@@ -9,8 +10,12 @@ import useThemeStore from "../../stores/useThemeStore";
 const Navbar = () => {
   const { cart } = useCartStore();
   const { theme, changeTheme } = useThemeStore();
+  const { isLogged } = useAuthStore();
 
-  const total = cart.reduce((acumulador, item) => acumulador + item.cantidad, 0);
+  const total = cart.reduce(
+    (acumulador, item) => acumulador + item.cantidad,
+    0
+  );
 
   return (
     <div className="navbar bg-base-100 border-b sticky top-0 z-50">
@@ -54,12 +59,16 @@ const Navbar = () => {
               </span>
               <Link to="/cart">Carrito</Link>
             </li>
-            <li>
-              <Link to="/register">Registro</Link>
-            </li>
-            <li>
-              <Link to="/login">Ingresar</Link>
-            </li>
+            {isLogged ? null : (
+              <>
+                <li>
+                  <Link to="/register">Registro</Link>
+                </li>
+                <li>
+                  <Link to="/login">Ingresar</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         {/* Marca/Logo que navega al home */}
@@ -81,12 +90,16 @@ const Navbar = () => {
             </span>
             <Link to="/cart">Carrito</Link>
           </li>
-          <li>
-            <Link to="/register">Registro</Link>
-          </li>
-          <li>
-            <Link to="/login">Ingresar</Link>
-          </li>
+          {isLogged ? null : (
+            <>
+              <li>
+                <Link to="/register">Registro</Link>
+              </li>
+              <li>
+                <Link to="/login">Ingresar</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
 
@@ -94,7 +107,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <input
           type="checkbox"
-          checked={theme === 'light' ? true : false }
+          checked={theme === "light" ? true : false}
           className="toggle mr-4"
           onChange={changeTheme}
         />
