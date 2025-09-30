@@ -4,6 +4,7 @@ import Navbar from './modules/ui/Navbar'
 import HomeView from './modules/Home/HomeView'
 import CartView from './modules/Cart/CartView'
 import RegisterView from './modules/Auth/RegisterView'
+import NotFoundView from './modules/NotFound/NotFoundView'
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
         <Route path="/" element={<HomeView />} />
         <Route path="/cart" element={<CartView />} />
         <Route path="/register" element={<RegisterView />} />
+        {/* 404, esta ruta tiene que estar al final */}
+        <Route path="*" element={<NotFoundView />} />
       </Routes>
 
       <ToastContainer />
