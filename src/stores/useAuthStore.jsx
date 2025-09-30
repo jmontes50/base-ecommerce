@@ -21,6 +21,7 @@ const useAuthStore = create((set) => ({
     } catch (error) {
       console.log(error)
       toast.error("Error al registrarse, verifique su información")
+      throw error
     }
   }
 }))
