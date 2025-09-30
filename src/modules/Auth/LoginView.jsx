@@ -101,7 +101,7 @@ export default function LoginView({ onSubmit }) {
           }`}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Registrando..." : "Crear cuenta"}
+          {isSubmitting ? "Ingresando..." : "Ingresar"}
         </button>
 
       </form>
