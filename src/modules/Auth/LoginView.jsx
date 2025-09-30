@@ -30,7 +30,7 @@ export default function LoginView({ onSubmit }) {
       >
         {/* Encabezado */}
         <header className="flex flex-col gap-1">
-          <h1 className="text-xl font-semibold">Ingresa con tu tu cuenta</h1>
+          <h1 className="text-xl font-semibold">Ingresa con tu cuenta</h1>
           <p className="text-sm opacity-70">
             Completa los campos para ingresar
           </p>
@@ -103,10 +103,6 @@ export default function LoginView({ onSubmit }) {
           {isSubmitting ? "Registrando..." : "Crear cuenta"}
         </button>
 
-        {/* Nota accesible */}
-        <p className="text-xs opacity-60">
-          Al registrarte, aceptas nuestros términos y políticas.
-        </p>
       </form>
     </section>
   );

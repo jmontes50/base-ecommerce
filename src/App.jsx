@@ -5,6 +5,7 @@ import HomeView from './modules/Home/HomeView'
 import CartView from './modules/Cart/CartView'
 import RegisterView from './modules/Auth/RegisterView'
 import NotFoundView from './modules/NotFound/NotFoundView'
+import LoginView from './modules/Auth/LoginView'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<HomeView />} />
         <Route path="/cart" element={<CartView />} />
         <Route path="/register" element={<RegisterView />} />
+        <Route path="/login" element={<LoginView />} />
         {/* 404, esta ruta tiene que estar al final */}
         <Route path="*" element={<NotFoundView />} />
       </Routes>
