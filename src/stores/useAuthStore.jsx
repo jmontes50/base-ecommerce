@@ -1,12 +1,13 @@
 import { create } from "zustand";
-import { saveStorage } from "../utils/localStorageUtils";
+import { saveStorage, getStorage } from "../utils/localStorageUtils";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const useAuthStore = create((set) => ({
-  user: null, //info user
-  token: null, //jwt
-  isLogged: false,//para saber si esta logueado o no
+  //getStorage deberia darme un objeto
+  user: getStorage("auth")?.user || null, //info user
+  token: getStorage("auth")?.token || null, //jwt
+  isLogged: getStorage("auth")?.isLogged || false,//para saber si esta logueado o no
   //userInfo tendra el nombre, email, password
   registerUser: async (userInfo) => {
     try {
@@ -30,6 +31,7 @@ const useAuthStore = create((set) => ({
       if(response.status === 200) {
         // console.log(response)
         const { token, usuario } = response.data;
+        saveStorage("auth", { user: usuario, token: token, isLogged: true } );
         set({ user: usuario, token: token, isLogged: true });
         toast.success("Bienvenido!!!");
         return true
