@@ -25,12 +25,18 @@ const useAuthStore = create((set) => ({
     }
   },
   loginUser: async (email, password) => {
-    console.log(email, password)
     try {
       const response = await axios.post('https://simple-api-2ivd.onrender.com/auth/login', { email, password});
-      console.log(response)
+      if(response.status === 200) {
+        toast.success("Bienvenido!!!");
+        return true
+      } else {
+        throw new Error ("Error al ingresar, intente de nuevo")
+      }
     } catch (error) {
       console.log(error)
+      toast.error("Error al ingresar, verifique sus datos");
+      throw errorWWW
     }
   }
 }))
