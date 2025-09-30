@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { saveStorage, getStorage } from "../utils/localStorageUtils";
+import { saveStorage, getStorage, removeStorage } from "../utils/localStorageUtils";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -43,6 +43,10 @@ const useAuthStore = create((set) => ({
       toast.error("Error al ingresar, verifique sus datos");
       throw error
     }
+  },
+  logout: () => {
+    removeStorage("auth");
+    set({ user:null, token: null, isLogged: false })
   }
 }))
 
