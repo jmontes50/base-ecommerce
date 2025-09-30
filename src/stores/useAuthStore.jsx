@@ -25,6 +25,7 @@ const useAuthStore = create((set) => ({
     }
   },
   loginUser: async (email, password) => {
+    console.log(email, password)
     try {
       const response = await axios.post('https://simple-api-2ivd.onrender.com/auth/login', { email, password});
       console.log(response)

@@ -14,11 +14,12 @@ export default function LoginView({ onSubmit }) {
     reValidateMode: "onBlur",
   });
 
-  const { registerUser } = useAuthStore();
+  const { loginUser } = useAuthStore();
   const navigate = useNavigate();
 
   const onSubmitInternal = async (data) => {
-
+    loginUser(data.email, data.password);
+    navigate('/')
   };
 
   return (
