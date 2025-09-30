@@ -55,10 +55,10 @@ const Navbar = () => {
               <Link to="/cart">Carrito</Link>
             </li>
             <li>
-              <a>Ofertas</a>
+              <Link to="/register">Registro</Link>
             </li>
             <li>
-              <a>Contacto</a>
+              <Link to="/login">Ingresar</Link>
             </li>
           </ul>
         </div>
@@ -82,7 +82,10 @@ const Navbar = () => {
             <Link to="/cart">Carrito</Link>
           </li>
           <li>
-            <a>Contacto</a>
+            <Link to="/register">Registro</Link>
+          </li>
+          <li>
+            <Link to="/login">Ingresar</Link>
           </li>
         </ul>
       </div>
