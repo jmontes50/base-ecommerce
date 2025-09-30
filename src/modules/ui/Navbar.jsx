@@ -119,8 +119,9 @@ const Navbar = () => {
             className="btn btn-ghost btn-circle avatar placeholder"
             aria-label="Abrir opciones de usuario"
           >
-            <div className="bg-neutral text-neutral-content w-10 rounded-full">
-              <span>U</span>
+            <div className="bg-neutral text-neutral-content w-10 rounded-full pt-3">
+              {/* <span>U</span> */}
+              <i className="fa-solid fa-user fa-2x"></i>
             </div>
           </div>
           {/* Opciones del usuario (estático) */}
